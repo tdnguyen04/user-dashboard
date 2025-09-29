@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 export default function LoginForm({
   server,
@@ -22,6 +23,7 @@ export default function LoginForm({
   rememberMe,
   setRememberMe
 }) {
+  const navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault();
     // Basic validation
@@ -43,6 +45,7 @@ export default function LoginForm({
       });
       if (response.status === 200) {
         // redirect to dashboard
+        navigate('/dashboard')
       }
       else if (response.status === 401) {
         // display wrong email or password

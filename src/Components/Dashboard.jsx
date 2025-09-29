@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const Dashboard = () => {
+export const Dashboard = ({email}) => {
   return (
-    <div>Dashboard</div>
+    <h1>Hello {email}</h1>
   )
 }
 

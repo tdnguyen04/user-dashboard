@@ -1,11 +1,8 @@
-import LoginForm from './Components/LoginForm';
-import Dashboard from './Components/Dashboard'
-import {
-  createTheme,
-  CssBaseline,
-  ThemeProvider,
-} from "@mui/material";
+import LoginForm from "./Components/LoginForm";
+import Dashboard from "./Components/Dashboard";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router";
 
 const theme = createTheme({
   palette: {
@@ -48,7 +45,26 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <LoginForm  server={SERVER_URL} email={email} setEmail={setEmail} password={password} setPassword={setPassword} rememberMe={rememberMe} setRememberMe={setRememberMe}  />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              <LoginForm
+                server={SERVER_URL}
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                rememberMe={rememberMe}
+                setRememberMe={setRememberMe}
+              />
+            }
+          />
+          <Route path="/dashboard" element={<Dashboard email={email} />} />
+        </Routes>
+      </BrowserRouter>
+      
     </ThemeProvider>
   );
 }
