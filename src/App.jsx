@@ -3,7 +3,6 @@ import Dashboard from "./Components/Dashboard";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
-import env from "react-dotenv";
 
 const theme = createTheme({
   palette: {
