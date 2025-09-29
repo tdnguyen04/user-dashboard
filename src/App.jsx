@@ -35,7 +35,7 @@ const theme = createTheme({
   },
 });
 
-const SERVER_URL = "https://jwt-basic-server.onrender.com/";
+const SERVER_URL = "https://jwt-basic-server.onrender.com";
 
 function App() {
   const [email, setEmail] = useState("");
