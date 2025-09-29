@@ -3,6 +3,7 @@ import Dashboard from "./Components/Dashboard";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
+import env from "react-dotenv";
 
 const theme = createTheme({
   palette: {
@@ -35,7 +36,7 @@ const theme = createTheme({
   },
 });
 
-const SERVER_URL = "http://localhost:5000";
+const SERVER_URL = "https://jwt-basic-server.onrender.com/";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -48,7 +49,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/login"
+            path="/"
             element={
               <LoginForm
                 server={SERVER_URL}
