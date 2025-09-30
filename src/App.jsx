@@ -2,7 +2,13 @@ import LoginForm from "./Components/LoginForm";
 import Dashboard from "./Components/Dashboard";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router";
 
 const theme = createTheme({
   palette: {
@@ -42,29 +48,31 @@ function App() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
+  const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <LoginForm
+        server={SERVER_URL}
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        rememberMe={rememberMe}
+        setRememberMe={setRememberMe}
+      />
+    ),
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard email={email} />,
+  },
+]);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <LoginForm
-                server={SERVER_URL}
-                email={email}
-                setEmail={setEmail}
-                password={password}
-                setPassword={setPassword}
-                rememberMe={rememberMe}
-                setRememberMe={setRememberMe}
-              />
-            }
-          />
-          <Route path="/dashboard" element={<Dashboard email={email} />} />
-        </Routes>
-      </BrowserRouter>
-      
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }
